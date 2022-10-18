@@ -1,6 +1,6 @@
-# Implementation-of-Logistic-Regression-Model-to-Predict-the-Placement-Status-of-Student
+# Implementation of Logistic Regression Model to Predict the Placement Status of Student
 
-## AIM:
+## Aim:
 To write a program to implement the the Logistic Regression Model to Predict the Placement Status of Student.
 
 ## Equipments Required:
@@ -20,17 +20,21 @@ To write a program to implement the the Logistic Regression Model to Predict the
 ```
 /*
 Program to implement the the Logistic Regression Model to Predict the Placement Status of Student.
-Developed by: ANITHA P
-RegisterNumber:  212221240004
+Developed by: SANJAI A
+RegisterNumber:  212220040142
 */
 import pandas as pd
-data = pd.read_csv("Placement_Data.csv")
+data=pd.read_csv("Placement_Data.csv")
 data.head()
-data1 = data.copy()
-data1 = data1.drop(["sl_no","salary"],axis=1)
+data1=data.copy()
+data1=data1.drop(["sl_no","salary"],axis=1)
 data1.head()
-data1.isnull().sum()
-data1.duplicated().sum()
+data1=data.copy()
+data1=data1.drop(["sl_no","salary"],axis=1)
+data1.head()
+data.isnull().sum()
+data1.head()
+data.duplicated().sum()
 from sklearn.preprocessing import LabelEncoder
 le=LabelEncoder()
 data1["gender"]=le.fit_transform(data1["gender"])
@@ -41,50 +45,31 @@ data1["degree_t"]=le.fit_transform(data1["degree_t"])
 data1["workex"]=le.fit_transform(data1["workex"])
 data1["specialisation"]=le.fit_transform(data1["specialisation"])
 data1["status"]=le.fit_transform(data1["status"])
-data1
-x = data1.iloc[:,:-1]
-x
+print (data1)
+x=data1.iloc[:,:-1]
 y=data1["status"]
-y
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=0)
 from sklearn.linear_model import LogisticRegression
-lr=LogisticRegression(solver="liblinear")
-lr.fit(x_train,y_train)
-y_pred=lr.predict(x_test)
-y_pred
+c=LogisticRegression(solver="liblinear")
+c.fit(x_train,y_train)
+y_pred=c.predict(x_test)
+print(y_pred)
 from sklearn.metrics import accuracy_score
-accuracy=accuracy_score(y_test,y_pred)
-accuracy
+acur=accuracy_score(y_test,y_pred)
+acur
 from sklearn.metrics import confusion_matrix
-confusion=confusion_matrix(y_test,y_pred)
-confusion
+con=confusion_matrix(y_test,y_pred)
+print(con)
 from sklearn.metrics import classification_report
-classification_report1=classification_report(y_test,y_pred)
-classification_report1
-lr.predict([[1,80,1,90,1,1,90,1,0,85,1,85]])
+class_report=classification_report(y_test,y_pred)
+print(class_report)
+print(c.predict([[1,80,1,90,1,1,90,1,0,85,1,85]]))
 ```
 
 ## Output:
-## Head:
-![the Logistic Regression Model to Predict the Placement Status of Student](m1.png)
-
-## Predicted value:
-
-![the Logistic Regression Model to Predict the Placement Status of Student](m4.png)
-
-## Accuracy:
-
-
-![the Logistic Regression Model to Predict the Placement Status of Student](m5.png)
-
-## Confusion matrix:
-
-![the Logistic Regression Model to Predict the Placement Status of Student](m6.png)
-
-## Classification report:
-
-![the Logistic Regression Model to Predict the Placement Status of Student](m8.png)
+![image](https://user-images.githubusercontent.com/95969295/196507791-4d653af8-9ba9-430d-bca5-148667236c3a.png)
+![image](https://user-images.githubusercontent.com/95969295/196507935-afabf8d4-ae6f-4bc5-bb08-f2cf12fdc575.png)
 
 ## Result:
 Thus the program to implement the the Logistic Regression Model to Predict the Placement Status of Student is written and verified using python programming.
